@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DSA Visualizer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>DSA Visualizer</h1>
+    <p class="subtitle">Sorting Algorithms &amp; Graph Traversals — Step by Step</p>
+  </header>
+
+  <nav class="tab-bar">
+    <button class="tab active" onclick="switchTab('sorting')">Sorting</button>
+    <button class="tab" onclick="switchTab('graph')">Graph Traversal</button>
+  </nav>
+
+  <!-- SORTING SECTION -->
+  <section id="sorting-section" class="section">
+
+    <div class="controls">
+      <div class="control-group">
+        <label>Algorithm</label>
+        <select id="algo-select">
+          <option value="bubble">Bubble Sort</option>
+          <option value="merge">Merge Sort</option>
+          <option value="quick">Quick Sort</option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label>Array Size</label>
+        <input type="range" id="size-slider" min="5" max="30" value="15" />
+        <span id="size-label">15</span>
+      </div>
+
+      <div class="control-group">
+        <label>Speed</label>
+        <input type="range" id="speed-slider" min="50" max="1000" value="400" step="50"/>
+        <span id="speed-label">Mid</span>
+      </div>
+
+      <div class="btn-row">
+        <button id="gen-btn" onclick="generateArray()">New Array</button>
+        <button id="sort-btn" onclick="startSort()">Sort</button>
+        <button id="step-btn" onclick="stepSort()">Step</button>
+        <button id="reset-btn" onclick="resetSort()">Reset</button>
+      </div>
+    </div>
+
+    <div class="complexity-bar">
+      <span id="complexity-time">Time: —</span>
+      <span id="complexity-space">Space: —</span>
+      <span id="comparisons-label">Comparisons: 0</span>
+    </div>
+
+    <div id="bar-container" class="bar-container"></div>
+
+    <div class="legend">
+      <span class="legend-item"><span class="dot default"></span> Unsorted</span>
+      <span class="legend-item"><span class="dot comparing"></span> Comparing</span>
+      <span class="legend-item"><span class="dot pivot"></span> Pivot</span>
+      <span class="legend-item"><span class="dot sorted"></span> Sorted</span>
+    </div>
+
+  </section>
+
+  <!-- GRAPH SECTION -->
+  <section id="graph-section" class="section hidden">
+
+    <div class="controls">
+      <div class="control-group">
+        <label>Traversal</label>
+        <select id="traversal-select">
+          <option value="bfs">BFS (Breadth-First)</option>
+          <option value="dfs">DFS (Depth-First)</option>
+        </select>
+      </div>
+
+      <div class="btn-row">
+        <button onclick="generateGraph()">New Graph</button>
+        <button onclick="startTraversal()">Traverse</button>
+        <button onclick="resetGraph()">Reset</button>
+      </div>
+    </div>
+
+    <div class="complexity-bar">
+      <span id="graph-complexity-time">Time: —</span>
+      <span id="graph-complexity-space">Space: —</span>
+      <span id="visited-label">Visited: 0 / 0</span>
+    </div>
+
+    <div class="graph-wrapper">
+      <canvas id="graph-canvas" width="700" height="400"></canvas>
+    </div>
+
+    <div class="legend">
+      <span class="legend-item"><span class="dot default"></span> Unvisited</span>
+      <span class="legend-item"><span class="dot comparing"></span> In Queue/Stack</span>
+      <span class="legend-item"><span class="dot sorted"></span> Visited</span>
+    </div>
+
+    <div id="traversal-order" class="traversal-order"></div>
+
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
